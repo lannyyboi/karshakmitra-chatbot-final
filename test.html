@@ -206,6 +206,7 @@
             chatBox.appendChild(messageElement);
             chatBox.scrollTop = chatBox.scrollHeight;
 
+            // This is the correct place to add the message to history.
             chatHistory.push({
                 role: isUser ? "user" : "model",
                 parts: [{ text: originalText }]
@@ -228,11 +229,6 @@
             userInput.value = '';
 
             typingIndicator.classList.remove('hidden');
-
-            chatHistory.push({
-                role: 'user',
-                parts: [{ text: userMessage }]
-            });
 
             const systemInstruction = {
                 parts: [{
